@@ -1,0 +1,36 @@
+From 965f9b50ba91e6e28b2b93226f206e4ba3517b93 Mon Sep 17 00:00:00 2001
+From: LABBE Corentin <clabbe.montjoie@gmail.com>
+Date: Wed, 27 Jan 2016 10:19:51 +0100
+Subject: [PATCH 04/13] ARM: dts: sun8i: Enable sun8i-emac on the Orange PI PC
+
+Enable the sun8i-emac harware present on the Orange PI PC.
+
+Signed-off-by: LABBE Corentin <clabbe.montjoie@gmail.com>
+---
+ arch/arm/boot/dts/sun8i-h3-orangepi-pc.dts | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dts b/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dts
+index daf50b9a6..d4f1697 100644
+--- a/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dts
++++ b/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dts
+@@ -165,3 +165,16 @@
+ 	/* USB VBUS is always on */
+ 	status = "okay";
+ };
++
++&ephy {
++	allwinner,ephy-addr = <0x1>;
++};
++
++&emac {
++	phy = <&phy1>;
++	phy-mode = "mii";
++	status = "okay";
++	phy1: ethernet-phy@1 {
++		reg = <0>;
++	};
++};
+-- 
+2.7.4
+

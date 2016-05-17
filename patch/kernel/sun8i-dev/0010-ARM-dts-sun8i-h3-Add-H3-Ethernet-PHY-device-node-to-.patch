@@ -1,0 +1,38 @@
+From 448abf1b0d5c84afb258c1ce596d4c95b3dccc2c Mon Sep 17 00:00:00 2001
+From: Chen-Yu Tsai <wens@csie.org>
+Date: Tue, 5 Apr 2016 00:22:32 +0800
+Subject: [PATCH 10/13] ARM: dts: sun8i-h3: Add H3 Ethernet PHY device node to
+ sun8i-h3.dtsi
+
+The Allwinner H3 SoC incorporates an Ethernet PHY, whose controls are
+mapped to a system control register.
+
+Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+Signed-off-by: LABBE Corentin <clabbe.montjoie@gmail.com>
+---
+ arch/arm/boot/dts/sun8i-h3.dtsi | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/arch/arm/boot/dts/sun8i-h3.dtsi b/arch/arm/boot/dts/sun8i-h3.dtsi
+index 57cd75f..171ab7d 100644
+--- a/arch/arm/boot/dts/sun8i-h3.dtsi
++++ b/arch/arm/boot/dts/sun8i-h3.dtsi
+@@ -311,6 +311,15 @@
+ 		#size-cells = <1>;
+ 		ranges;
+ 
++		ephy: ethernet-phy@01c00030 {
++			compatible = "allwinner,sun8i-h3-ephy";
++			reg = <0x01c00030 0x4>;
++			clocks = <&bus_gates 128>;
++			resets = <&ahb_rst 66>;
++			#clock-cells = <0>;
++			clock-output-names = "emac_tx";
++		};
++
+ 		dma: dma-controller@01c02000 {
+ 			compatible = "allwinner,sun8i-h3-dma";
+ 			reg = <0x01c02000 0x1000>;
+-- 
+2.7.4
+
