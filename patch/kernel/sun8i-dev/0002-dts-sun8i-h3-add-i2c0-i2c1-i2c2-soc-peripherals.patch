@@ -1,0 +1,57 @@
+From 37e557e8d571dad64d7abb109f8a6b4b3de65a22 Mon Sep 17 00:00:00 2001
+From: Martin Ayotte <martin...@gmail.com>
+Date: Thu, 5 May 2016 10:00:53 -0400
+Subject: [PATCH 2/4] dts: sun8i-h3: add i2c0/i2c1/i2c2 soc peripherals
+
+Signed-off-by: Martin Ayotte <martin...@gmail.com>
+---
+ arch/arm/boot/dts/sun8i-h3.dtsi | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+
+diff --git a/arch/arm/boot/dts/sun8i-h3.dtsi b/arch/arm/boot/dts/sun8i-h3.dtsi
+index 0d535e6..cd45089 100644
+--- a/arch/arm/boot/dts/sun8i-h3.dtsi
++++ b/arch/arm/boot/dts/sun8i-h3.dtsi
+@@ -660,6 +660,39 @@
+ 			#size-cells = <0>;
+ 		};
+ 
++		i2c0: i2c@01c2ac00 {
++			compatible = "allwinner,sun6i-a31-i2c";
++			reg = <0x01c2ac00 0x400>;
++			interrupts = <GIC_SPI 6 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&bus_gates 96>;
++			resets = <&apb2_rst 0>;
++			status = "disabled";
++			#address-cells = <1>;
++			#size-cells = <0>;
++		};
++
++		i2c1: i2c@01c2b000 {
++			compatible = "allwinner,sun6i-a31-i2c";
++			reg = <0x01c2b000 0x400>;
++			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&bus_gates 97>;
++			resets = <&apb2_rst 1>;
++			status = "disabled";
++			#address-cells = <1>;
++			#size-cells = <0>;
++		};
++
++		i2c2: i2c@01c2b400 {
++			compatible = "allwinner,sun6i-a31-i2c";
++			reg = <0x01c2b400 0x400>;
++			interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&bus_gates 98>;
++			resets = <&apb2_rst 2>;
++			status = "disabled";
++			#address-cells = <1>;
++			#size-cells = <0>;
++		};
++
+ 		gic: interrupt-controller@01c81000 {
+ 			compatible = "arm,cortex-a7-gic", "arm,cortex-a15-gic";
+ 			reg = <0x01c81000 0x1000>,
+-- 
+2.7.4
+

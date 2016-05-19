@@ -1,0 +1,32 @@
+From 26bfca25ffaf6bc5ee97851491d3bb7624446743 Mon Sep 17 00:00:00 2001
+From: Max Asaulov <balldir@gmail.com>
+Date: Wed, 18 May 2016 19:16:29 +0300
+Subject: [PATCH 3/4] ARM: dts: sun8i-h3: Enable i2c0/1 on the Orange PI ONE
+
+---
+ arch/arm/boot/dts/sun8i-h3-orangepi-one.dts | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/arch/arm/boot/dts/sun8i-h3-orangepi-one.dts b/arch/arm/boot/dts/sun8i-h3-orangepi-one.dts
+index 0adf932..1d1a5b7 100644
+--- a/arch/arm/boot/dts/sun8i-h3-orangepi-one.dts
++++ b/arch/arm/boot/dts/sun8i-h3-orangepi-one.dts
+@@ -143,3 +143,15 @@
+ 	/* USB VBUS is always on */
+ 	status = "okay";
+ };
++
++&i2c0 {
++        pinctrl-names = "default";
++        pinctrl-0 = <&i2c0_pins_a>;
++        status = "okay";
++};
++
++&i2c1 {
++        pinctrl-names = "default";
++        pinctrl-0 = <&i2c1_pins_a>;
++        status = "okay";
++};
+-- 
+2.7.4
+

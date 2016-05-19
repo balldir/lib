@@ -1,0 +1,45 @@
+From f7a1c96f8c058ace97559a284382eef7f665f942 Mon Sep 17 00:00:00 2001
+From: Martin Ayotte <martin...@gmail.com>
+Date: Thu, 5 May 2016 10:00:06 -0400
+Subject: [PATCH 1/4] dts: sun8i-h3: add i2c0/i2c1/i2c2 pins definitions
+
+Signed-off-by: Martin Ayotte <martin...@gmail.com>
+---
+ arch/arm/boot/dts/sun8i-h3.dtsi | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/arch/arm/boot/dts/sun8i-h3.dtsi b/arch/arm/boot/dts/sun8i-h3.dtsi
+index 37858bb..0d535e6 100644
+--- a/arch/arm/boot/dts/sun8i-h3.dtsi
++++ b/arch/arm/boot/dts/sun8i-h3.dtsi
+@@ -508,6 +508,27 @@
+ 				allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
+ 			};
+ 
++			i2c0_pins_a: i2c0@0 {
++				allwinner,pins = "PA11", "PA12";
++				allwinner,function = "i2c0";
++				allwinner,drive = <SUN4I_PINCTRL_10_MA>;
++				allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
++			};
++
++			i2c1_pins_a: i2c1@0 {
++				allwinner,pins = "PA18", "PA19";
++				allwinner,function = "i2c1";
++				allwinner,drive = <SUN4I_PINCTRL_10_MA>;
++				allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
++			};
++
++			i2c2_pins_a: i2c2@0 {
++				allwinner,pins = "PE12", "PE13";
++				allwinner,function = "i2c2";
++				allwinner,drive = <SUN4I_PINCTRL_10_MA>;
++				allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
++			};
++
+ 			mmc0_pins_a: mmc0@0 {
+ 				allwinner,pins = "PF0", "PF1", "PF2", "PF3",
+ 						 "PF4", "PF5";
+-- 
+2.7.4
+
