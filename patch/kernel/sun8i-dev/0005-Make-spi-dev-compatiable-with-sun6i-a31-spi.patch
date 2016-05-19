@@ -1,0 +1,24 @@
+From b9c111f552cefa5a2133148998012bcf6169b72b Mon Sep 17 00:00:00 2001
+From: Max Asaulov <balldir@gmail.com>
+Date: Thu, 19 May 2016 19:31:23 +0300
+Subject: [PATCH 05/10] Make spi dev compatiable with sun6i-a31-spi
+
+---
+ drivers/spi/spidev.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/spi/spidev.c b/drivers/spi/spidev.c
+index e3c19f3..7811557 100644
+--- a/drivers/spi/spidev.c
++++ b/drivers/spi/spidev.c
+@@ -695,6 +695,7 @@ static struct class *spidev_class;
+ static const struct of_device_id spidev_dt_ids[] = {
+ 	{ .compatible = "rohm,dh2228fv" },
+ 	{ .compatible = "lineartechnology,ltc2488" },
++	{ .compatible = "allwinner,sun6i-a31-spi" },
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, spidev_dt_ids);
+-- 
+2.7.4
+

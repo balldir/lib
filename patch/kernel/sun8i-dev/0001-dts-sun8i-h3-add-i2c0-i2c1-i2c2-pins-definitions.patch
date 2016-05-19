@@ -1,7 +1,7 @@
-From f7a1c96f8c058ace97559a284382eef7f665f942 Mon Sep 17 00:00:00 2001
+From bfbcd3b361ecae0732d86ba1daf5e9e6510ee781 Mon Sep 17 00:00:00 2001
 From: Martin Ayotte <martin...@gmail.com>
 Date: Thu, 5 May 2016 10:00:06 -0400
-Subject: [PATCH 1/4] dts: sun8i-h3: add i2c0/i2c1/i2c2 pins definitions
+Subject: [PATCH 01/10] dts: sun8i-h3: add i2c0/i2c1/i2c2 pins definitions
 
 Signed-off-by: Martin Ayotte <martin...@gmail.com>
 ---

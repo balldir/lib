@@ -1,0 +1,39 @@
+From 571d945ddbb1bb282e9480a66be146f496b6bc54 Mon Sep 17 00:00:00 2001
+From: Max Asaulov <balldir@gmail.com>
+Date: Thu, 19 May 2016 19:33:45 +0300
+Subject: [PATCH 08/10] ARM: dts: sun8i-h3: Enable spi0 on the Orange PI PC
+
+---
+ arch/arm/boot/dts/sun8i-h3-orangepi-pc.dts | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dts b/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dts
+index cb1fc2d..0bd7af9 100644
+--- a/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dts
++++ b/arch/arm/boot/dts/sun8i-h3-orangepi-pc.dts
+@@ -54,6 +54,7 @@
+ 
+ 	aliases {
+ 		serial0 = &uart0;
++		spi0 = &spi0;
+ 	};
+ 
+ 	chosen {
+@@ -189,3 +190,14 @@
+         pinctrl-0 = <&i2c1_pins_a>;
+         status = "okay";
+ };
++
++&spi0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&spi0_pins_a>, <&spi0_cs0_pins_a>;
++	status = "okay";
++	spidev@0 {
++		compatible = "allwinner,sun6i-a31-spi";
++		reg = <0>;
++		spi-max-frequency = <50000000>;
++	};
++};
+-- 
+2.7.4
+

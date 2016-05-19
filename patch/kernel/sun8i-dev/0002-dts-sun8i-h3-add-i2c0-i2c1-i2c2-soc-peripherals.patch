@@ -1,7 +1,7 @@
-From 37e557e8d571dad64d7abb109f8a6b4b3de65a22 Mon Sep 17 00:00:00 2001
+From 08daf02bb1db70e7d9233a704ca405e8d2e3ca34 Mon Sep 17 00:00:00 2001
 From: Martin Ayotte <martin...@gmail.com>
 Date: Thu, 5 May 2016 10:00:53 -0400
-Subject: [PATCH 2/4] dts: sun8i-h3: add i2c0/i2c1/i2c2 soc peripherals
+Subject: [PATCH 02/10] dts: sun8i-h3: add i2c0/i2c1/i2c2 soc peripherals
 
 Signed-off-by: Martin Ayotte <martin...@gmail.com>
 ---

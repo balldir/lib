@@ -1,7 +1,7 @@
-From 5b74aba8b9be4263b5e91ef3d92c20f4801d4302 Mon Sep 17 00:00:00 2001
+From 0f9dbd374accd7dfed09059107e9df666354a62a Mon Sep 17 00:00:00 2001
 From: Max Asaulov <balldir@gmail.com>
 Date: Wed, 18 May 2016 19:18:32 +0300
-Subject: [PATCH 4/4] ARM: dts: sun8i-h3: Enable i2c0/1 on the Orange PI PC
+Subject: [PATCH 04/10] ARM: dts: sun8i-h3: Enable i2c0/1 on the Orange PI PC
 
 ---
  arch/arm/boot/dts/sun8i-h3-orangepi-pc.dts | 12 ++++++++++++

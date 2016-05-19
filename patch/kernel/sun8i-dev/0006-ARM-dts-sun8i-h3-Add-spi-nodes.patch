@@ -1,0 +1,93 @@
+From efccb3538893acda7a2665687d52d3a4cfb53407 Mon Sep 17 00:00:00 2001
+From: Max Asaulov <balldir@gmail.com>
+Date: Thu, 19 May 2016 19:32:22 +0300
+Subject: [PATCH 06/10] ARM: dts: sun8i-h3: Add spi nodes
+
+---
+ arch/arm/boot/dts/sun8i-h3.dtsi | 56 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 56 insertions(+)
+
+diff --git a/arch/arm/boot/dts/sun8i-h3.dtsi b/arch/arm/boot/dts/sun8i-h3.dtsi
+index cd45089..a136cb4 100644
+--- a/arch/arm/boot/dts/sun8i-h3.dtsi
++++ b/arch/arm/boot/dts/sun8i-h3.dtsi
+@@ -289,6 +289,22 @@
+ 			clock-output-names = "mbus";
+ 		};
+ 
++		spi0_clk: clk@01c200a0 {
++			#clock-cells = <0>;
++			compatible = "allwinner,sun4i-a10-mod0-clk";
++			reg = <0x01c200a0 0x4>;
++			clocks = <&osc24M>, <&pll6 0>;
++			clock-output-names = "spi0";
++		};
++
++		spi1_clk: clk@01c200a4 {
++			#clock-cells = <0>;
++			compatible = "allwinner,sun4i-a10-mod0-clk";
++			reg = <0x01c200a4 0x4>;
++			clocks = <&osc24M>, <&pll6 0>;
++			clock-output-names = "spi1";
++		};
++
+ 		apb0: apb0_clk {
+ 			compatible = "fixed-factor-clock";
+ 			#clock-cells = <0>;
+@@ -561,6 +577,20 @@
+ 				allwinner,drive = <SUN4I_PINCTRL_30_MA>;
+ 				allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
+ 			};
++
++			spi0_pins_a: spi0@0 {
++				allwinner,pins = "PC0", "PC1", "PC2";
++				allwinner,function = "spi0";
++				allwinner,drive = <SUN4I_PINCTRL_10_MA>;
++				allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
++			};
++
++			spi0_cs0_pins_a: spi0_cs0@0 {
++				allwinner,pins = "PC3";
++				allwinner,function = "spi0";
++				allwinner,drive = <SUN4I_PINCTRL_10_MA>;
++				allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
++			};
+ 		};
+ 
+ 		ahb_rst: reset@01c202c0 {
+@@ -693,6 +723,32 @@
+ 			#size-cells = <0>;
+ 		};
+ 
++		spi0: spi@01c68000 {
++			compatible = "allwinner,sun6i-a31-spi";
++			reg = <0x01c68000 0x1000>;
++			interrupts = <GIC_SPI 65 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&bus_gates 20>, <&spi0_clk>;
++			clock-names = "ahb", "mod";
++			dmas = <&dma 23>, <&dma 23>;
++			dma-names = "rx", "tx";
++			resets = <&bus_rst 20>;
++			status = "disabled";
++			#address-cells = <1>;
++			#size-cells = <0>;
++		};
++
++		spi1: spi@01c69000 {
++			compatible = "allwinner,sun6i-a31-spi";
++			reg = <0x01c69000 0x1000>;
++			interrupts = <GIC_SPI 66 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&bus_gates 21>, <&spi1_clk>;
++			clock-names = "ahb", "mod";
++			dmas = <&dma 24>, <&dma 24>;
++			dma-names = "rx", "tx";
++			resets = <&bus_rst 21>;
++			status = "disabled";
++		};
++
+ 		gic: interrupt-controller@01c81000 {
+ 			compatible = "arm,cortex-a7-gic", "arm,cortex-a15-gic";
+ 			reg = <0x01c81000 0x1000>,
+-- 
+2.7.4
+

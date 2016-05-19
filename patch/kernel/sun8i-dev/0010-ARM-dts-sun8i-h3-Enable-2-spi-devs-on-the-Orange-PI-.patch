@@ -1,0 +1,52 @@
+From fe020f427cfbfa1807697cd66e167d4c733f51af Mon Sep 17 00:00:00 2001
+From: Max Asaulov <balldir@gmail.com>
+Date: Thu, 19 May 2016 19:58:24 +0300
+Subject: [PATCH 10/10] ARM: dts: sun8i-h3: Enable 2 spi devs on the Orange PI
+ ONE
+
+---
+ arch/arm/boot/dts/sun8i-h3-orangepi-one.dts | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/sun8i-h3-orangepi-one.dts b/arch/arm/boot/dts/sun8i-h3-orangepi-one.dts
+index fa955aa..18eace4 100644
+--- a/arch/arm/boot/dts/sun8i-h3-orangepi-one.dts
++++ b/arch/arm/boot/dts/sun8i-h3-orangepi-one.dts
+@@ -115,6 +115,13 @@
+ 		allwinner,drive = <SUN4I_PINCTRL_10_MA>;
+ 		allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
+ 	};
++
++	spi_dev_opc: spi_dev_pins @0 {
++		allwinner,pins = "PA9", "PA10";
++		allwinner,function = "gpio_out";
++		allwinner,drive = <SUN4I_PINCTRL_10_MA>;
++		allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
++	};
+ };
+ 
+ &r_pio {
+@@ -158,11 +165,19 @@
+ 
+ &spi0 {
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&spi0_pins_a>, <&spi0_cs0_pins_a>;
++	pinctrl-0 = <&spi0_pins_a>, <&spi0_cs0_pins_a>, <&spi_dev_opc>;
++	cs-gpios = <&pio 0 9 GPIO_ACTIVE_HIGH>, <&pio 0 10 GPIO_ACTIVE_HIGH>;
+ 	status = "okay";
++
+ 	spidev@0 {
+ 		compatible = "allwinner,sun6i-a31-spi";
+ 		reg = <0>;
+ 		spi-max-frequency = <50000000>;
+ 	};
++
++	spidev@1 {
++		compatible = "allwinner,sun6i-a31-spi";
++		reg = <1>;
++		spi-max-frequency = <50000000>;
++	};
+ };
+-- 
+2.7.4
+
