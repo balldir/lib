@@ -67,7 +67,7 @@ index cd45089..a136cb4 100644
 +			clock-names = "ahb", "mod";
 +			dmas = <&dma 23>, <&dma 23>;
 +			dma-names = "rx", "tx";
-+			resets = <&bus_rst 20>;
++			resets = <&apb2_rst 20>;
 +			status = "disabled";
 +			#address-cells = <1>;
 +			#size-cells = <0>;
@@ -81,7 +81,7 @@ index cd45089..a136cb4 100644
 +			clock-names = "ahb", "mod";
 +			dmas = <&dma 24>, <&dma 24>;
 +			dma-names = "rx", "tx";
-+			resets = <&bus_rst 21>;
++			resets = <&apb2_rst 21>;
 +			status = "disabled";
 +		};
 +

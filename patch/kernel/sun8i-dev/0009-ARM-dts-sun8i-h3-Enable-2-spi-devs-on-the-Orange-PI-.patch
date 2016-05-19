@@ -17,7 +17,7 @@ index 0bd7af9..3678d78 100644
  		allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
  	};
 +
-+	spi_dev_opc: spi_dev_pins @0 {
++	spi_dev_opc: spi_dev_pins@0 {
 +		allwinner,pins = "PA9", "PA10";
 +		allwinner,function = "gpio_out";
 +		allwinner,drive = <SUN4I_PINCTRL_10_MA>;
